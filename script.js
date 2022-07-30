@@ -82,13 +82,13 @@ const users = [
 	},
 ];
 
-const sortUsersByLastName = users.sort((a, b) => {
+const sortUsersByLastName = (users) => users.sort((a, b) => {
 	const nameA = a.lastName.toLowerCase();
 	const nameB = b.lastName.toLowerCase();
 	
 	return nameA.localeCompare(nameB);
 });
-console.log(sortUsersByLastName);
+console.log(sortUsersByLastName(users));
 
 
 const filterUsersByAge = (comparingAge) => {
