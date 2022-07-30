@@ -9,13 +9,13 @@
 
 const catFactURL = "https://catfact.ninja/fact";
 const dogImgURL = "https://dog.ceo/api/breeds/image/random";
-const catImgURL = "https://randomfox.ca/floof/";
+const foxImgURL = "https://randomfox.ca/floof/";
 
 const container = document.querySelector('.container');
 
 const getJson = (url) => fetch(url).then(response => response.json());
 
-Promise.all([getJson(catFactURL), getJson(dogImgURL), getJson(catImgURL)])
+Promise.all([getJson(catFactURL), getJson(dogImgURL), getJson(foxImgURL)])
     .then((response) => {
         const responsesContent = [];
 		response.forEach((responseObject) => {
