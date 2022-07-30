@@ -17,9 +17,8 @@ const getJson = (url) => fetch(url).then(response => response.json());
 
 Promise.all([getJson(catFactURL), getJson(dogImgURL), getJson(foxImgURL)])
     .then((response) => {
-        const responsesContent = [];
-		response.forEach((responseObject) => {
-            responsesContent.push(responseObject.fact || responseObject.message || responseObject.image);
+        const responsesContent = response.map((responseObject) => {
+            return (responseObject.fact || responseObject.message || responseObject.image);
         });
 
         return responsesContent;
@@ -37,7 +36,10 @@ Promise.all([getJson(catFactURL), getJson(dogImgURL), getJson(foxImgURL)])
                 container.appendChild(contentText);
             }
         });
-    });
+    })
+	.catch((error) => {
+		console.error(error.message);
+	});
 
 
 // Zadanie nr 2 - operacje na datach
@@ -83,13 +85,13 @@ const users = [
 	},
 ];
 
-const sortUsersByLastName = users.sort((a, b) => {
+const sortUsersByLastName = (users) => users.sort((a, b) => {
 	const nameA = a.lastName.toLowerCase();
 	const nameB = b.lastName.toLowerCase();
 	
 	return nameA.localeCompare(nameB);
 });
-console.log(sortUsersByLastName);
+console.log(sortUsersByLastName(users));
 
 
 const filterUsersByAge = (comparingAge) => {
