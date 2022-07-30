@@ -17,9 +17,8 @@ const getJson = (url) => fetch(url).then(response => response.json());
 
 Promise.all([getJson(catFactURL), getJson(dogImgURL), getJson(foxImgURL)])
     .then((response) => {
-        const responsesContent = [];
-		response.forEach((responseObject) => {
-            responsesContent.push(responseObject.fact || responseObject.message || responseObject.image);
+        const responsesContent = response.map((responseObject) => {
+            return (responseObject.fact || responseObject.message || responseObject.image);
         });
 
         return responsesContent;
