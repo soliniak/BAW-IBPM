@@ -36,7 +36,10 @@ Promise.all([getJson(catFactURL), getJson(dogImgURL), getJson(foxImgURL)])
                 container.appendChild(contentText);
             }
         });
-    });
+    })
+	.catch((error) => {
+		console.error(error.message);
+	});
 
 
 // Zadanie nr 2 - operacje na datach
